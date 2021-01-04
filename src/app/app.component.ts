@@ -10,7 +10,8 @@ export class AppComponent {
   title = 'CDAD';
   constructor(public translate: TranslateService) {
     const lang = localStorage.getItem('language');
-    if (lang) {
+    if (lang === 'ar') {
+      this.isEn = false;
       translate.setDefaultLang(lang);
       translate.use(lang);
     } else {
