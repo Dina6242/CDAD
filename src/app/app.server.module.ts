@@ -3,9 +3,12 @@ import { ServerModule, ServerTransferStateModule } from '@angular/platform-serve
 
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { translateServerLoaderFactory } from './core/translate-server.loader';
 import { TransferState } from '@angular/platform-browser';
+import { localizeLoaderFactory } from './core/LocalizeUniversalLoader';
+import { LocalizeParser, LocalizeRouterModule, LocalizeRouterSettings } from '@gilsdav/ngx-translate-router';
+import { routes } from './app-routing.module';
 
 @NgModule({
   imports: [
@@ -20,6 +23,13 @@ import { TransferState } from '@angular/platform-browser';
         deps: [TransferState]
       }
     }),
+    LocalizeRouterModule.forRoot(routes, {
+      parser: {
+        provide: LocalizeParser,
+        useFactory: localizeLoaderFactory,
+        deps: [LocalizeRouterSettings]
+      },
+    })
   ],
   bootstrap: [AppComponent],
 })

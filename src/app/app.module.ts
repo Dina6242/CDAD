@@ -1,23 +1,23 @@
-import { BrowserModule, TransferState } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {Location} from '@angular/common';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AppRoutingModule, routes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TransferHttpCacheModule } from '@nguniversal/common';
 import { translateBrowserLoaderFactory } from './core/translate-browser.loader';
 import { RouterModule } from '@angular/router';
 import { LocalizeRouterHttpLoader } from '@gilsdav/ngx-translate-router-http-loader';
 import { LocalizeParser, LocalizeRouterModule, LocalizeRouterSettings } from '@gilsdav/ngx-translate-router';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
-    TransferHttpCacheModule,
     HttpClientModule,
     AppRoutingModule,
     TranslateModule.forRoot({
@@ -25,7 +25,7 @@ import { LocalizeParser, LocalizeRouterModule, LocalizeRouterSettings } from '@g
       loader: {
         provide: TranslateLoader,
         useFactory: translateBrowserLoaderFactory,
-        deps: [HttpClient, TransferState],
+        deps: [HttpClient],
       },
     }),
     RouterModule.forRoot(routes),

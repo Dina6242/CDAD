@@ -9,22 +9,22 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
 
   constructor(public translate: TranslateService) {
-    if (typeof localStorage !== 'undefined') {
-      const lang = localStorage.getItem('language');
-
-      if (lang === 'ar') {
-        this.isEn = false;
-        translate.setDefaultLang(lang);
-        translate.use(lang);
-      } else {
-        translate.setDefaultLang('en');
-        translate.use('en');
-
-        if (localStorage) {
-          localStorage.setItem('language', 'en');
-        }
-      }
-    }
+    // if (typeof localStorage !== 'undefined') {
+    //   const lang = localStorage.getItem('language');
+    //
+    //   if (lang === 'ar') {
+    //     this.isEn = false;
+    //     translate.setDefaultLang(lang);
+    //     translate.use(lang);
+    //   } else {
+    //     translate.setDefaultLang('en');
+    //     translate.use('en');
+    //
+    //     if (localStorage) {
+    //       localStorage.setItem('language', 'en');
+    //     }
+    //   }
+    // }
   }
 
   isEn = true;
