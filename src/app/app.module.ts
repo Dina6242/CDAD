@@ -1,15 +1,15 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, TransferState } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AppRoutingModule, routes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TransferHttpCacheModule } from '@nguniversal/common';
 import { translateBrowserLoaderFactory } from './core/translate-browser.loader';
-import { RouterModule } from '@angular/router';
-import { LocalizeRouterHttpLoader } from '@gilsdav/ngx-translate-router-http-loader';
 import { LocalizeParser, LocalizeRouterModule, LocalizeRouterSettings } from '@gilsdav/ngx-translate-router';
 import { HomeComponent } from './home/home.component';
+import { localizeBrowserLoaderFactory } from './core/localize-browser.loader';
 
 @NgModule({
   declarations: [
@@ -18,6 +18,7 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
+    TransferHttpCacheModule,
     HttpClientModule,
     AppRoutingModule,
     TranslateModule.forRoot({
@@ -25,17 +26,16 @@ import { HomeComponent } from './home/home.component';
       loader: {
         provide: TranslateLoader,
         useFactory: translateBrowserLoaderFactory,
-        deps: [HttpClient],
+        deps: [HttpClient, TransferState],
       },
     }),
-    RouterModule.forRoot(routes),
     LocalizeRouterModule.forRoot(routes, {
       parser: {
         provide: LocalizeParser,
-        useFactory: (translate: TranslateService, location: Location, settings: LocalizeRouterSettings, http: HttpClient) =>
-          new LocalizeRouterHttpLoader(translate, location, settings, http),
-        deps: [TranslateService, Location, LocalizeRouterSettings, HttpClient],
+        useFactory: localizeBrowserLoaderFactory,
+        deps: [TranslateService, Location, LocalizeRouterSettings, HttpClient, TransferState],
       },
+      initialNavigation: true
     }),
   ],
   providers: [],

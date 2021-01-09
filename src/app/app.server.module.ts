@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { translateServerLoaderFactory } from './core/translate-server.loader';
 import { TransferState } from '@angular/platform-browser';
-import { localizeLoaderFactory } from './core/LocalizeUniversalLoader';
+import { localizeServerLoaderFactory } from './core/localize-server.loader';
 import { LocalizeParser, LocalizeRouterModule, LocalizeRouterSettings } from '@gilsdav/ngx-translate-router';
 import { routes } from './app-routing.module';
 
@@ -26,8 +26,8 @@ import { routes } from './app-routing.module';
     LocalizeRouterModule.forRoot(routes, {
       parser: {
         provide: LocalizeParser,
-        useFactory: localizeLoaderFactory,
-        deps: [TranslateService, Location, LocalizeRouterSettings]
+        useFactory: localizeServerLoaderFactory,
+        deps: [TranslateService, Location, LocalizeRouterSettings, TransferState]
       },
     })
   ],
