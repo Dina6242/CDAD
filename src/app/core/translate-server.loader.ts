@@ -22,7 +22,7 @@ export class TranslateServerLoader implements TranslateLoader {
         'dist',
         'CDAD', // Your project name here
         'browser',
-        'locales.json',
+        'assets',
         this.prefix
       );
 
