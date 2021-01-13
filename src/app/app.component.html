@@ -1,10 +1,9 @@
-  <div>
-    <h1> hi from app </h1>
-    <h1>{{"HOME" | translate}}</h1>
-    <button (click)="useLanguage()">
-      <span *ngIf="isEn">{{ 'العربيه' | translate }}</span>
-      <span *ngIf="!isEn">{{ 'English' | translate }}</span>
-    </button>
-  </div>
-
 <router-outlet></router-outlet>
+<div>
+  <h1> hi from app </h1>
+  <h1>{{"HOME" | translate}}</h1>
+<!--  <button (click)="useLanguage()">-->
+<!--    <span *ngIf="isEn">{{ 'العربيه' | translate }}</span>-->
+<!--    <span *ngIf="!isEn">{{ 'English' | translate }}</span>-->
+<!--  </button>-->
+</div>

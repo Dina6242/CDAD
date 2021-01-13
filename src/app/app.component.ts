@@ -27,25 +27,25 @@ export class AppComponent {
     // }
   }
 
-  isEn = true;
+  // isEn = true;
 
-  useLanguage(): void {
-    this.isEn = !this.isEn;
-
-    if (!this.isEn) {
-      this.translate.setDefaultLang('ar');
-      this.translate.use('ar');
-
-      if (localStorage) {
-        localStorage.setItem('language', 'ar');
-      }
-    } else {
-      this.translate.setDefaultLang('en');
-      this.translate.use('en');
-
-      if (localStorage) {
-        localStorage.setItem('language', 'en');
-      }
-    }
-  }
+  // useLanguage(): void {
+  //   this.isEn = !this.isEn;
+  //
+  //   if (!this.isEn) {
+  //     this.translate.setDefaultLang('ar');
+  //     this.translate.use('ar');
+  //
+  //     if (localStorage) {
+  //       localStorage.setItem('language', 'ar');
+  //     }
+  //   } else {
+  //     this.translate.setDefaultLang('en');
+  //     this.translate.use('en');
+  //
+  //     if (localStorage) {
+  //       localStorage.setItem('language', 'en');
+  //     }
+  //   }
+  // }
 }
