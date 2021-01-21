@@ -10,11 +10,16 @@ import { translateBrowserLoaderFactory } from './core/translate-browser.loader';
 import { LocalizeParser, LocalizeRouterModule, LocalizeRouterSettings } from '@gilsdav/ngx-translate-router';
 import { HomeComponent } from './home/home.component';
 import { localizeBrowserLoaderFactory } from './core/localize-browser.loader';
+import { FooComponent } from './foo/foo.component';
+import { NavbarComponent } from './core/components/navbar/navbar.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    FooComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
@@ -37,6 +42,7 @@ import { localizeBrowserLoaderFactory } from './core/localize-browser.loader';
       },
       initialNavigation: true
     }),
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent],
