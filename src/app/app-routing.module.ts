@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { Location } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { FooComponent } from './foo/foo.component';
 import { LocalizeParser, LocalizeRouterModule, LocalizeRouterSettings } from '@gilsdav/ngx-translate-router';

@@ -1,6 +1,5 @@
 import { BrowserModule, TransferState } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Location } from '@angular/common';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AppRoutingModule, routes } from './app-routing.module';
 import { AppComponent } from './app.component';

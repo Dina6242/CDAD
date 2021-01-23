@@ -37,6 +37,21 @@ export class NavbarComponent implements OnInit {
   changeLangage(lang: string): void {
     const htmlTag = this.document.getElementsByTagName('html')[0] as HTMLHtmlElement;
     htmlTag.dir = lang === 'ar' ? 'rtl' : 'ltr';
-    // this.changeCssFile(lang);
+    this.changeCssFile(lang);
+  }
+  changeCssFile(lang: string): void {
+    const headTag = this.document.getElementsByTagName('head')[0] as HTMLHeadElement;
+    const existingLink = this.document.getElementById('langCss') as HTMLLinkElement;
+    const bundleName = lang === 'ar' ? 'arabicStyle' : 'englishStyle';
+    if (existingLink) {
+      existingLink.href = bundleName;
+    } else {
+      const newLink = this.document.createElement('link');
+      newLink.rel = 'stylesheet';
+      newLink.type = 'text/css';
+      newLink.id = 'langCss';
+      newLink.href = bundleName;
+      headTag.appendChild(newLink);
+    }
   }
 }

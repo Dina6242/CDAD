@@ -96,7 +96,16 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.css"
+              {
+                "input": "node_modules/bootstrap/dist/css/bootstrap.rtl.css",
+                "bundleName": "arabicStyle",
+                "lazy": true
+              },
+              {
+                "input": "node_modules/bootstrap/dist/css/bootstrap.css",
+                "bundleName": "englishStyle",
+                "lazy": true
+              }
             ],
             "scripts": []
           }
