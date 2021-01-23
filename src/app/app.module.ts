@@ -26,7 +26,7 @@ import { RouterModule } from '@angular/router';
     TransferHttpCacheModule,
     HttpClientModule,
     AppRoutingModule,
-    TranslateModule.forRoot({
+     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {
         provide: TranslateLoader,
@@ -34,15 +34,6 @@ import { RouterModule } from '@angular/router';
         deps: [HttpClient, TransferState],
       },
     }),
-    LocalizeRouterModule.forRoot(routes, {
-      parser: {
-        provide: LocalizeParser,
-        useFactory: localizeBrowserLoaderFactory,
-        deps: [TranslateService, Location, LocalizeRouterSettings, HttpClient, TransferState],
-      },
-      initialNavigation: true
-    }),
-    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent],
