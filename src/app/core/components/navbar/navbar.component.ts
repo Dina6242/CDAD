@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit {
   changeCssFile(lang: string): void {
     const headTag = this.document.getElementsByTagName('head')[0] as HTMLHeadElement;
     const existingLink = this.document.getElementById('langCss') as HTMLLinkElement;
-    const bundleName = lang === 'ar' ? 'arabicStyle' : 'englishStyle';
+    const bundleName = lang === 'ar' ? 'arabicStyle.css' : 'englishStyle.css';
     if (existingLink) {
       existingLink.href = bundleName;
     } else {
