@@ -22,8 +22,9 @@ export class NavbarComponent implements OnInit {
       if (!(val instanceof NavigationEnd)) {
         return;
       }
-      this.currentUrl = val.url.split(this.localizeService.parser.currentLang)[1];
+      this.currentUrl = val.url.replace(this.localizeService.parser.currentLang, '');
     });
+    this.currentUrl = this.router.url.replace(this.localizeService.parser.currentLang, '');
     if (this.localizeService.parser.currentLang === 'ar') {
       this.isEn = false;
     }
@@ -39,6 +40,7 @@ export class NavbarComponent implements OnInit {
     htmlTag.dir = lang === 'ar' ? 'rtl' : 'ltr';
     this.changeCssFile(lang);
   }
+
   changeCssFile(lang: string): void {
     const headTag = this.document.getElementsByTagName('head')[0] as HTMLHeadElement;
     const existingLink = this.document.getElementById('langCss') as HTMLLinkElement;
